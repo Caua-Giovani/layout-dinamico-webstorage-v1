@@ -20,4 +20,16 @@
 body.dark{
     --text-color:#f1f1f1;
     --bg-color:#121212;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+html{
+    font-family: var(--font-family);
 }
