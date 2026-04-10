@@ -6,22 +6,30 @@ const body =document.querySelector('body');
 const newsArticles =document.querySelectorAll('.news');
 
 const loadPreferences = () =>{
-    document.documentElement.style.setProperty('--primary-color',localStorage.getItem('primaryColor'));
-    colorPicker.value = localStorage.getItem('primaryColor');
+    const savedHeaderColor = localStorage.getItem('primaryColor');
+    if (savedHeaderColor){
+        document.documentElement.style.setProperty('--primary-color', savedHeaderColor);
+        colorPicker.value = savedHeaderColor;
+    };
     
-    newsArticles.forEach(article => {article.style.backgroundColor = localStorage.getItem('articleColor')});
-    articleColorPicker.value = localStorage.getItem('articleColor');
+    const savedArticleColor = localStorage.getItem('articleColor')
+    if (savedArticleColor){
+        newsArticles.forEach(article => {article.style.backgroundColor = savedArticleColor});
+        articleColorPicker.value = savedArticleColor;
+    };
 
     const savedFont = localStorage.getItem('fontFamily');
     if (savedFont) {
         document.documentElement.style.setProperty('--font-family',savedFont);
         fontSelect.value = savedFont;
-    };  
+    };
+
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         body.classList.add('dark');
         themeToggle.textContent = 'light_mode';
     };
+
 };
 
 colorPicker.addEventListener('input' , (e) =>{
