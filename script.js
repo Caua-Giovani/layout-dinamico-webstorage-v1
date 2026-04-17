@@ -27,10 +27,11 @@ const loadPreferences = () =>{
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         body.classList.add('dark');
-        themeToggle.textContent = 'light_mode';
+        themeToggle.children[0].textContent = 'light_mode';
     };
 
 };
+
 
 colorPicker.addEventListener('input' , (e) =>{
     const color = e.target.value;
@@ -53,7 +54,7 @@ fontSelect.addEventListener('change' , (e) =>{
 themeToggle.addEventListener('click', () =>{
     body.classList.toggle('dark');
     const isDark = body.classList.contains('dark');
-    themeToggle.textContent = isDark
+    themeToggle.children[0].textContent = isDark
         ? 'light_mode'
         : 'dark_mode';
     
